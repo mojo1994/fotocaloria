@@ -1,0 +1,54 @@
+## Error Type
+Recoverable Error
+
+## Error Message
+Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+      <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+        <LoadingBoundary loading={null}>
+          <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/" tree={[...]} cacheNode={{lazyData:null, ...}} segmentPath={[...]}>
+                    <SegmentViewNode type="page" pagePath="page.tsx">
+                      <SegmentTrieNode>
+                      <ClientPageRoot Component={function HomePage} searchParams={{}} params={{}}>
+                        <HomePage params={Promise} searchParams={Promise}>
+                          <div className="space-y-8">
+                            <section className="rounded-3x...">
++                             <span className="badge">
+-                             <div className="grid items-center gap-8 lg:grid-cols-2">
+                              ...
+                            ...
+                    ...
+                  ...
+      ...
+
+
+
+    at span (<anonymous>:null:null)
+    at HomePage (src\app\page.tsx:151:9)
+
+## Code Frame
+  149 |     <div className="space-y-8">
+  150 |       <section className="rounded-3xl border border-brand-100 bg-white p-6 shadow-sm sm:p-8">
+> 151 |         <div className="grid items-center gap-8 lg:grid-cols-2">
+      |         ^
+  152 |           <div>
+  153 |             <h1 className="text-3xl leading-tight sm:text-4xl">
+  154 |               Fotografe a refeicao e veja calorias e macronutrientes
+
+Next.js version: 15.5.27 (Webpack)
