@@ -20,17 +20,17 @@ export interface VisionProvider {
  * estimar, nao inventar e sinalizar o que nao da para ver.
  */
 export const VISION_PROMPT = [
-  "Voce analisa fotos de refeicoes para um app de estimativa nutricional.",
-  "Olhe a imagem e liste os alimentos visiveis como um JSON valido.",
-  "Regras obrigatorias:",
-  "- De um nome PROVAVEL para cada alimento.",
-  "- Estime a quantidade em gramas. E uma ESTIMATIVA, nunca um valor exato.",
-  "- Liste possiveis metodos de preparo (ex.: grelhado, frito, cozido, assado).",
-  "- Em 'uncertainties', liste duvidas sobre a analise.",
-  "- Em 'notDeterminable', liste ingredientes que NAO podem ser vistos",
-  "  (ex.: sal, acucar, oleo usado no preparo, temperos).",
-  "- NUNCA afirme que a foto revela ingredientes invisiveis.",
-  "- Se nao reconhecer nada comestivel, ainda assim responda no formato pedido",
+  "Você analisa fotos de refeições para um app de estimativa nutricional.",
+  "Olhe a imagem e liste os alimentos visíveis como um JSON válido.",
+  "Regras obrigatórias:",
+  "- Dê um nome PROVÁVEL para cada alimento.",
+  "- Estime a quantidade em gramas. É uma ESTIMATIVA, nunca um valor exato.",
+  "- Liste possíveis métodos de preparo (ex.: grelhado, frito, cozido, assado).",
+  "- Em 'uncertainties', liste dúvidas sobre a análise.",
+  "- Em 'notDeterminable', liste ingredientes que NÃO podem ser vistos",
+  "  (ex.: sal, açúcar, óleo usado no preparo, temperos).",
+  "- NUNCA afirme que a foto revela ingredientes invisíveis.",
+  "- Se não reconhecer nada comestível, ainda assim responda no formato pedido",
   "  com o que conseguir observar.",
   "Formato EXATO (somente o JSON, sem texto extra):",
   '{"foods":[{"name":"string","estimatedGrams":0,"preparation":["string"],"confidence":0.0,"notes":"string"}],"uncertainties":["string"],"notDeterminable":["string"]}',
@@ -51,6 +51,6 @@ export function extractJson(text: string): unknown {
     if (start !== -1 && end !== -1 && end > start) {
       return JSON.parse(withoutFences.slice(start, end + 1));
     }
-    throw new Error("Nao foi possivel interpretar a resposta da IA como JSON.");
+    throw new Error("Não foi possível interpretar a resposta da IA como JSON.");
   }
 }

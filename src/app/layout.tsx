@@ -8,7 +8,7 @@ import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 export const metadata: Metadata = {
   title: "FotoCaloria",
   description:
-    "Fotografe sua refeicao e receba uma estimativa transparente de calorias e macronutrientes.",
+    "Fotografe sua refeição e receba uma estimativa transparente de calorias e macronutrientes.",
   applicationName: "FotoCaloria",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="#conteudo"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-brand-800 focus:px-4 focus:py-2 focus:text-white"
         >
-          Pular para o conteudo principal
+          Pular para o conteúdo principal
         </a>
 
         <header className="sticky top-0 z-40 border-b border-brand-100 bg-white/85 backdrop-blur">
@@ -64,8 +64,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="mx-auto max-w-4xl px-4 pb-10 pt-4 text-sm text-brand-700">
           <div className="rounded-3xl border border-brand-100 bg-white/70 p-5">
             <p>
-              As estimativas sao aproximadas e nao substituem avaliacao profissional. O historico
-              fica salvo apenas neste dispositivo e pode nao sincronizar entre aparelhos.
+              As estimativas são aproximadas e não substituem avaliação profissional. O histórico
+              fica salvo apenas neste dispositivo e pode não sincronizar entre aparelhos.
             </p>
           </div>
         </footer>

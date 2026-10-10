@@ -44,14 +44,14 @@ export function saveHistory(
   meals: readonly Meal[],
   storage: StorageLike | null = getDefaultStorage(),
 ): { ok: boolean; error?: string } {
-  if (!storage) return { ok: false, error: "Armazenamento indisponivel neste dispositivo." };
+  if (!storage) return { ok: false, error: "Armazenamento indisponível neste dispositivo." };
   const valid = HistorySchema.safeParse(meals);
-  if (!valid.success) return { ok: false, error: "Dados invalidos: nada foi salvo." };
+  if (!valid.success) return { ok: false, error: "Dados inválidos: nada foi salvo." };
   try {
     storage.setItem(STORAGE_KEY, JSON.stringify(valid.data));
     return { ok: true };
   } catch {
-    return { ok: false, error: "Nao foi possivel salvar (armazenamento cheio ou bloqueado)." };
+    return { ok: false, error: "Não foi possível salvar (armazenamento cheio ou bloqueado)." };
   }
 }
 
@@ -61,7 +61,7 @@ export function addMeal(
 ): { ok: boolean; error?: string; meals: Meal[] } {
   const valid = MealSchema.safeParse(meal);
   if (!valid.success) {
-    return { ok: false, error: "Refeicao invalida.", meals: loadHistory(storage) };
+    return { ok: false, error: "Refeição inválida.", meals: loadHistory(storage) };
   }
   const next = [valid.data, ...loadHistory(storage)];
   const saved = saveHistory(next, storage);

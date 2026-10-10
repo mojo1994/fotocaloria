@@ -66,13 +66,13 @@ export function createOpenAIProvider(config: OpenAIConfig): VisionProvider {
         const payload = (await response.json()) as OpenAIResponse;
         const text = payload.choices?.[0]?.message?.content;
         if (!text) {
-          throw new Error("O provedor de IA nao retornou conteudo.");
+          throw new Error("O provedor de IA não retornou conteúdo.");
         }
 
         return AiAnalysisSchema.parse(extractJson(text));
       } catch (error) {
         if (error instanceof Error && error.name === "AbortError") {
-          throw new Error("A analise excedeu o tempo limite.");
+          throw new Error("A análise excedeu o tempo limite.");
         }
         throw error;
       } finally {

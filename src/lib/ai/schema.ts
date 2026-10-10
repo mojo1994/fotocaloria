@@ -45,10 +45,10 @@ export const AnalyzeResponseSchema = AiAnalysisSchema.extend({
 export type AnalyzeResponse = z.infer<typeof AnalyzeResponseSchema>;
 
 export const DISCLAIMER =
-  "Estimativa gerada automaticamente a partir da foto. Os valores sao aproximados, " +
-  "nao substituem avaliacao nutricional e podem nao refletir ingredientes que nao " +
+  "Estimativa gerada automaticamente a partir da foto. Os valores são aproximados, " +
+  "não substituem avaliação nutricional e podem não refletir ingredientes que não " +
   "aparecem na imagem.";
 
 export const DEMO_DISCLAIMER =
-  "MODO DEMONSTRACAO: estes dados sao ficticios, apenas para testar a interface. " +
+  "MODO DEMONSTRAÇÃO: estes dados são fictícios, apenas para testar a interface. " +
   "Nenhuma foto foi analisada de verdade.";

@@ -100,20 +100,20 @@ export function createGeminiProvider(config: GeminiConfig): VisionProvider {
 
       const text = collectText(payload);
       if (!text) {
-        throw new ProviderError("O provedor de IA nao retornou conteudo.", true);
+        throw new ProviderError("O provedor de IA não retornou conteúdo.", true);
       }
 
       return AiAnalysisSchema.parse(extractJson(text));
     } catch (error) {
       if (error instanceof ProviderError) throw error;
       if (error instanceof Error && error.name === "AbortError") {
-        throw new ProviderError("A analise excedeu o tempo limite.", true);
+        throw new ProviderError("A análise excedeu o tempo limite.", true);
       }
       if (error instanceof SyntaxError) {
         throw new ProviderError("A resposta da IA veio em um formato inesperado.", false);
       }
       // Erro de rede (fetch). Vale reter tentativa.
-      throw new ProviderError("Falha de conexao com o provedor de IA.", true);
+      throw new ProviderError("Falha de conexão com o provedor de IA.", true);
     } finally {
       clearTimeout(timer);
     }
@@ -137,7 +137,7 @@ export function createGeminiProvider(config: GeminiConfig): VisionProvider {
         }
       }
 
-      throw lastError ?? new ProviderError("Nao foi possivel concluir a analise.", false);
+      throw lastError ?? new ProviderError("Não foi possível concluir a análise.", false);
     },
   };
 }

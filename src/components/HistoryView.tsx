@@ -82,7 +82,7 @@ export function HistoryView() {
   }
 
   function handleClear() {
-    if (typeof window !== "undefined" && !window.confirm("Apagar todo o historico deste aparelho?")) {
+    if (typeof window !== "undefined" && !window.confirm("Apagar todo o histórico deste aparelho?")) {
       return;
     }
     clearHistory();
@@ -92,14 +92,14 @@ export function HistoryView() {
   if (meals === null) {
     return (
       <p role="status" aria-live="polite" className="text-brand-800">
-        Carregando historico...
+        Carregando histórico...
       </p>
     );
   }
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl">Historico de refeicoes</h1>
+      <h1 className="text-3xl">Histórico de refeições</h1>
 
       <section aria-labelledby="total-hoje" className="card">
         <h2 id="total-hoje" className="text-xl">
@@ -109,23 +109,23 @@ export function HistoryView() {
           <>
             <Macros nutrients={todayTotal} />
             <p className="mt-1 text-brand-700">
-              {todayCount} refeicao(oes) registrada(s) hoje.
+              {todayCount} refeição(ões) registrada(s) hoje.
             </p>
           </>
         ) : (
-          <p className="mt-2 text-brand-800">Nenhuma refeicao registrada hoje ainda.</p>
+          <p className="mt-2 text-brand-800">Nenhuma refeição registrada hoje ainda.</p>
         )}
       </section>
 
       {meals.length === 0 ? (
         <section className="card">
-          <p className="text-brand-800">Seu historico esta vazio.</p>
+          <p className="text-brand-800">Seu histórico está vazio.</p>
           <p className="mt-2 text-brand-700">
-            O historico inicial fica salvo apenas neste dispositivo e pode nao sincronizar
+            O histórico inicial fica salvo apenas neste dispositivo e pode não sincronizar
             entre aparelhos.
           </p>
           <Link href="/" className="btn-primary mt-4">
-            Fotografar uma refeicao
+            Fotografar uma refeição
           </Link>
         </section>
       ) : (
@@ -145,14 +145,14 @@ export function HistoryView() {
                           minute: "2-digit",
                         })}
                         {meal.isDemo ? (
-                          <span className="pill ml-2">Demonstracao</span>
+                          <span className="pill ml-2">Demonstração</span>
                         ) : null}
                       </p>
                       <button
                         type="button"
                         className="rounded-xl px-3 py-1 text-sm font-semibold text-red-800 hover:bg-red-50"
                         onClick={() => handleDelete(meal.id)}
-                        aria-label="Remover esta refeicao do historico"
+                        aria-label="Remover esta refeição do histórico"
                       >
                         Remover
                       </button>
@@ -168,7 +168,7 @@ export function HistoryView() {
           ))}
 
           <button type="button" className="btn-danger" onClick={handleClear}>
-            Apagar todo o historico
+            Apagar todo o histórico
           </button>
         </>
       )}

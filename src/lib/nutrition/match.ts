@@ -58,7 +58,7 @@ export function matchFood(name: string): MatchResult {
       food: null,
       confidence: 0,
       reliable: false,
-      reason: "Nome de alimento vazio ou invalido.",
+      reason: "Nome de alimento vazio ou inválido.",
     };
   }
 
@@ -77,7 +77,7 @@ export function matchFood(name: string): MatchResult {
       food: null,
       confidence: best ? Number(best.score.toFixed(2)) : 0,
       reliable: false,
-      reason: `Sem correspondencia confiavel na base de referencia para "${name}".`,
+      reason: `Sem correspondência confiável na base de referência para "${name}".`,
     };
   }
 
@@ -85,6 +85,6 @@ export function matchFood(name: string): MatchResult {
     food: best.food,
     confidence: Number(best.score.toFixed(2)),
     reliable: true,
-    reason: `Correspondencia com "${best.food.name}" (confianca ${best.score.toFixed(2)}).`,
+    reason: `Correspondência com "${best.food.name}" (confiança ${best.score.toFixed(2)}).`,
   };
 }

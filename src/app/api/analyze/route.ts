@@ -46,26 +46,26 @@ export async function POST(request: NextRequest) {
 
   if (!rate.allowed) {
     return NextResponse.json(
-      { error: "Muitas analises em pouco tempo. Aguarde e tente novamente." },
+      { error: "Muitas análises em pouco tempo. Aguarde e tente novamente." },
       { status: 429, headers: { "Retry-After": String(rate.retryAfterSeconds) } },
     );
   }
 
   const declaredLength = Number(request.headers.get("content-length") ?? "0");
   if (Number.isFinite(declaredLength) && declaredLength > MAX_BODY_BYTES) {
-    return NextResponse.json({ error: "Requisicao muito grande." }, { status: 413 });
+    return NextResponse.json({ error: "Requisição muito grande." }, { status: 413 });
   }
 
   let json: unknown;
   try {
     json = await request.json();
   } catch {
-    return NextResponse.json({ error: "Requisicao invalida." }, { status: 400 });
+    return NextResponse.json({ error: "Requisição inválida." }, { status: 400 });
   }
 
   const body = BodySchema.safeParse(json);
   if (!body.success) {
-    return NextResponse.json({ error: "Dados ausentes ou invalidos." }, { status: 400 });
+    return NextResponse.json({ error: "Dados ausentes ou inválidos." }, { status: 400 });
   }
 
   const image = validateImageDataUrl(body.data.image);
@@ -85,8 +85,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Nenhum alimento foi identificado nesta foto. Tente uma imagem mais nitida, " +
-            "com o prato bem iluminado e visivel por completo.",
+            "Nenhum alimento foi identificado nesta foto. Tente uma imagem mais nítida, " +
+            "com o prato bem iluminado e visível por completo.",
         },
         { status: 422 },
       );
@@ -103,9 +103,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(response, { status: 200 });
   } catch {
     // Nao registramos imagem nem dados pessoais nos logs.
-    console.error("[analyze] falha ao processar a analise de imagem.");
+    console.error("[analyze] falha ao processar a análise de imagem.");
     return NextResponse.json(
-      { error: "Nao foi possivel concluir a analise agora. Tente novamente em instantes." },
+      { error: "Não foi possível concluir a análise agora. Tente novamente em instantes." },
       { status: 502 },
     );
   }

@@ -90,7 +90,7 @@ export function PlansModal({ open, currentPlanId, onClose, onSelect }: PlansModa
               Escolha um plano para analisar
             </h2>
             <p id="planos-descricao" className="mt-1 text-brand-800">
-              A analise de fotos e um recurso dos planos pagos. Selecione uma opcao para continuar.
+              A análise de fotos é um recurso dos planos pagos. Selecione uma opção para continuar.
             </p>
           </div>
           <button
@@ -160,7 +160,7 @@ export function PlansModal({ open, currentPlanId, onClose, onSelect }: PlansModa
           </ul>
 
           <p className="mt-5 text-center text-sm text-brand-700">
-            Demonstracao: nenhuma cobranca e realizada neste MVP.
+            Demonstração: nenhuma cobrança é realizada neste MVP.
           </p>
         </div>
 
@@ -170,7 +170,7 @@ export function PlansModal({ open, currentPlanId, onClose, onSelect }: PlansModa
             onClick={onClose}
             className="text-base font-semibold text-brand-800 underline underline-offset-4 hover:text-brand-900"
           >
-            Agora nao
+            Agora não
           </button>
         </div>
       </div>

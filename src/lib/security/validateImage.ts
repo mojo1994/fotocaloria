@@ -44,14 +44,14 @@ function sniffMime(buffer: Buffer): AllowedMime | null {
  */
 export function validateImageDataUrl(input: unknown): ImageValidation {
   if (typeof input !== "string" || input.length === 0) {
-    return { ok: false, error: "Imagem ausente ou em formato invalido." };
+    return { ok: false, error: "Imagem ausente ou em formato inválido." };
   }
 
   const match = DATA_URL_RE.exec(input);
   if (!match) {
     return {
       ok: false,
-      error: "Formato nao suportado. Envie uma imagem JPEG, PNG ou WebP.",
+      error: "Formato não suportado. Envie uma imagem JPEG, PNG ou WebP.",
     };
   }
 
@@ -62,25 +62,25 @@ export function validateImageDataUrl(input: unknown): ImageValidation {
   try {
     buffer = Buffer.from(base64, "base64");
   } catch {
-    return { ok: false, error: "Nao foi possivel decodificar a imagem." };
+    return { ok: false, error: "Não foi possível decodificar a imagem." };
   }
 
   if (buffer.length === 0) {
-    return { ok: false, error: "A imagem esta vazia." };
+    return { ok: false, error: "A imagem está vazia." };
   }
   if (buffer.length > MAX_IMAGE_BYTES) {
     return {
       ok: false,
-      error: "A imagem e muito grande. O limite e 6 MB.",
+      error: "A imagem é muito grande. O limite é 6 MB.",
     };
   }
 
   const actualMime = sniffMime(buffer);
   if (!actualMime) {
-    return { ok: false, error: "O conteudo do arquivo nao e uma imagem valida." };
+    return { ok: false, error: "O conteúdo do arquivo não é uma imagem válida." };
   }
   if (actualMime !== declaredMime) {
-    return { ok: false, error: "O tipo declarado nao corresponde ao conteudo do arquivo." };
+    return { ok: false, error: "O tipo declarado não corresponde ao conteúdo do arquivo." };
   }
 
   return { ok: true, mimeType: actualMime, base64, bytes: buffer.length };

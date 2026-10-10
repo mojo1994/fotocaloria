@@ -21,8 +21,8 @@ interface ServerMode {
 
 const STEPS = [
   { title: "Tire a foto", text: "Fotografe o prato ou escolha uma imagem da galeria." },
-  { title: "Confira a estimativa", text: "Veja alimentos, porcoes e macronutrientes." },
-  { title: "Ajuste e salve", text: "Corrija o que quiser e registre no historico." },
+  { title: "Confira a estimativa", text: "Veja alimentos, porções e macronutrientes." },
+  { title: "Ajuste e salve", text: "Corrija o que quiser e registre no histórico." },
 ];
 
 export default function HomePage() {
@@ -95,13 +95,13 @@ export default function HomePage() {
 
       if (!response.ok) {
         const payload = (await response.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(payload?.error || "Nao foi possivel concluir a analise.");
+        throw new Error(payload?.error || "Não foi possível concluir a análise.");
       }
 
       const raw = await response.json();
       const parsed = AnalyzeResponseSchema.safeParse(raw);
       if (!parsed.success) {
-        throw new Error("A resposta da analise veio em um formato inesperado.");
+        throw new Error("A resposta da análise veio em um formato inesperado.");
       }
 
       setAnalysis(parsed.data);
@@ -111,7 +111,7 @@ export default function HomePage() {
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Nao foi possivel concluir a analise. Tente novamente.",
+          : "Não foi possível concluir a análise. Tente novamente.",
       );
       setPhase("error");
       queueMicrotask(() => errorRef.current?.focus());
@@ -140,7 +140,7 @@ export default function HomePage() {
     if (result.ok) {
       setSaved(true);
     } else {
-      setErrorMessage(result.error ?? "Nao foi possivel salvar a refeicao.");
+      setErrorMessage(result.error ?? "Não foi possível salvar a refeição.");
       setPhase("error");
     }
   }, [items, analysis]);
@@ -151,11 +151,11 @@ export default function HomePage() {
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div>
             <h1 className="text-3xl leading-tight sm:text-4xl">
-              Fotografe a refeicao e veja calorias e macronutrientes
+              Descubra a caloria do seu prato em segundos
             </h1>
             <p className="mt-3 text-lg text-brand-800">
-              Uma estimativa transparente a partir da imagem. Voce pode corrigir cada alimento e
-              porcao antes de salvar no seu historico.
+              Uma estimativa transparente a partir da imagem. Você pode corrigir cada alimento e
+              porção antes de salvar no seu histórico.
             </p>
 
             {serverMode?.isDemo ? (
@@ -163,9 +163,9 @@ export default function HomePage() {
                 role="note"
                 className="mt-5 rounded-2xl border-2 border-amber-400 bg-amber-50 p-4 text-amber-900"
               >
-                <strong>Modo demonstracao ativo.</strong> Nenhuma foto sera analisada de verdade
-                enquanto nao houver uma chave de IA configurada no servidor. Os resultados serao
-                exemplos ficticios e identificados como tal.
+                <strong>Modo demonstração ativo.</strong> Nenhuma foto será analisada de verdade
+                enquanto não houver uma chave de IA configurada no servidor. Os resultados serão
+                exemplos fictícios e identificados como tal.
               </p>
             ) : null}
           </div>
@@ -178,7 +178,7 @@ export default function HomePage() {
               muted
               loop
               playsInline
-              aria-label="Demonstracao do FotoCaloria."
+              aria-label="Demonstração do FotoCaloria."
             />
           </figure>
         </div>
@@ -200,10 +200,10 @@ export default function HomePage() {
         <section aria-labelledby="inicio-titulo" className="card space-y-5">
           <div>
             <h2 id="inicio-titulo" className="text-xl">
-              Comecar
+              Começar
             </h2>
             <p className="mt-1 text-brand-800">
-              Escolha como enviar a foto. Nada e enviado para servicos externos sem a sua acao.
+              Escolha como enviar a foto. Nada é enviado para serviços externos sem a sua ação.
             </p>
           </div>
           <PhotoCapture onSelect={handleSelect} onError={handleClientError} />
@@ -218,7 +218,7 @@ export default function HomePage() {
           <div className="overflow-hidden rounded-2xl border border-brand-100 bg-brand-50">
             <Image
               src={imageDataUrl}
-              alt="Pre-visualizacao da refeicao selecionada"
+              alt="Pré-visualização da refeição selecionada"
               width={800}
               height={600}
               unoptimized
@@ -259,17 +259,17 @@ export default function HomePage() {
         <>
           {saved ? (
             <div role="status" className="card border-2 border-brand-700">
-              <h2 className="text-xl">Refeicao salva neste dispositivo</h2>
+              <h2 className="text-xl">Refeição salva neste dispositivo</h2>
               <p className="mt-2 text-brand-800">
-                O historico inicial fica salvo apenas neste aparelho e pode nao sincronizar entre
+                O histórico inicial fica salvo apenas neste aparelho e pode não sincronizar entre
                 dispositivos.
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <Link href="/history" className="btn-primary">
-                  Ver historico e total diario
+                  Ver histórico e total diário
                 </Link>
                 <button type="button" className="btn-secondary" onClick={resetAll}>
-                  Fotografar outra refeicao
+                  Fotografar outra refeição
                 </button>
               </div>
             </div>

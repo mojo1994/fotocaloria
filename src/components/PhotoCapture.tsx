@@ -21,20 +21,20 @@ export function PhotoCapture({ onSelect, onError, disabled }: PhotoCaptureProps)
     if (!file) return;
 
     if (!ALLOWED.has(file.type)) {
-      onError("Formato nao suportado. Use uma foto JPEG, PNG ou WebP.");
+      onError("Formato não suportado. Use uma foto JPEG, PNG ou WebP.");
       return;
     }
     if (file.size > MAX_IMAGE_BYTES) {
-      onError("A foto e muito grande. O limite e 6 MB.");
+      onError("A foto é muito grande. O limite é 6 MB.");
       return;
     }
 
     const reader = new FileReader();
     reader.onload = () => {
       if (typeof reader.result === "string") onSelect(reader.result);
-      else onError("Nao foi possivel ler a imagem.");
+      else onError("Não foi possível ler a imagem.");
     };
-    reader.onerror = () => onError("Nao foi possivel ler a imagem.");
+    reader.onerror = () => onError("Não foi possível ler a imagem.");
     reader.readAsDataURL(file);
   }
 

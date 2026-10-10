@@ -34,7 +34,7 @@ function MacroSummary({ kcal, protein, carbs, fat }: EditableItem["nutrients"]) 
         <dd className="font-semibold text-brand-900">{fmt(kcal)} kcal</dd>
       </div>
       <div>
-        <dt className="text-brand-700">Proteinas</dt>
+        <dt className="text-brand-700">Proteínas</dt>
         <dd className="font-semibold text-brand-900">{fmt(protein)} g</dd>
       </div>
       <div>
@@ -78,17 +78,17 @@ export function ResultEditor(props: ResultEditorProps) {
     <section aria-labelledby="resultado-titulo" className="space-y-5">
       <div className="card">
         <h2 id="resultado-titulo" className="text-xl">
-          Resultado da analise
+          Resultado da análise
         </h2>
 
         {isDemo ? (
           <p className="mt-3 rounded-xl border-2 border-amber-400 bg-amber-50 p-3 text-amber-900">
-            <strong>Modo demonstracao.</strong> Os alimentos abaixo sao exemplos ficticios, sem
-            analise real da sua foto. Configure uma chave de IA para usar a analise real.
+            <strong>Modo demonstração.</strong> Os alimentos abaixo são exemplos fictícios, sem
+            análise real da sua foto. Configure uma chave de IA para usar a análise real.
           </p>
         ) : (
           <p className="mt-3 rounded-xl border border-brand-100 bg-brand-50 p-3 text-brand-800">
-            Analise feita pelo provedor <strong>{source}</strong>. Valores sao estimativas.
+            Análise feita pelo provedor <strong>{source}</strong>. Valores são estimativas.
           </p>
         )}
 
@@ -97,7 +97,7 @@ export function ResultEditor(props: ResultEditorProps) {
 
       {items.length === 0 ? (
         <p role="status" className="rounded-2xl bg-white p-4 text-brand-800 shadow-sm">
-          Nenhum alimento na lista. Adicione uma foto novamente para recomecar.
+          Nenhum alimento na lista. Adicione uma foto novamente para recomeçar.
         </p>
       ) : (
         <ul className="space-y-4">
@@ -110,7 +110,7 @@ export function ResultEditor(props: ResultEditorProps) {
                   <h3 className="text-lg">{item.name}</h3>
                   <div className="flex items-center gap-2">
                     <span className="pill">
-                      {item.matched ? "Na base de referencia" : "Sem correspondencia"}
+                      {item.matched ? "Na base de referência" : "Sem correspondência"}
                     </span>
                     <button
                       type="button"
@@ -125,15 +125,15 @@ export function ResultEditor(props: ResultEditorProps) {
 
                 {!item.matched ? (
                   <p className="mt-2 rounded-xl border border-amber-300 bg-amber-50 p-2 text-sm text-amber-900">
-                    Nao encontramos &quot;{item.name}&quot; com seguranca na base. Escolha um alimento
-                    equivalente abaixo para calcular, ou mantenha sem calculo.
+                    Não encontramos &quot;{item.name}&quot; com segurança na base. Escolha um alimento
+                    equivalente abaixo para calcular, ou mantenha sem cálculo.
                   </p>
                 ) : null}
 
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
                   <div>
                     <label htmlFor={foodFieldId} className="field-label">
-                      Alimento de referencia
+                      Alimento de referência
                     </label>
                     <select
                       id={foodFieldId}
@@ -145,7 +145,7 @@ export function ResultEditor(props: ResultEditorProps) {
                         )
                       }
                     >
-                      <option value="">Sem calculo (nao encontrado)</option>
+                      <option value="">Sem cálculo (não encontrado)</option>
                       {foodOptions.map((food) => (
                         <option key={food.id} value={food.id}>
                           {food.name}
@@ -180,15 +180,15 @@ export function ResultEditor(props: ResultEditorProps) {
 
                 {item.preparation.length > 0 ? (
                   <p className="mt-3 text-base text-brand-800">
-                    <span className="font-semibold">Preparo provavel:</span>{" "}
+                    <span className="font-semibold">Preparo provável:</span>{" "}
                     {item.preparation.join(", ")}
                   </p>
                 ) : null}
 
                 <MacroSummary {...item.nutrients} />
                 <p className="mt-2 text-sm text-brand-700">
-                  Confianca da deteccao (itens {index + 1}):{" "}
-                  {Math.round(item.confidence * 100)}%. Corrija os valores acima se necessario.
+                  Confiança da detecção (item {index + 1}):{" "}
+                  {Math.round(item.confidence * 100)}%. Corrija os valores acima se necessário.
                 </p>
               </li>
             );
@@ -197,7 +197,7 @@ export function ResultEditor(props: ResultEditorProps) {
       )}
 
       <div className="card" aria-live="polite">
-        <h2 className="text-xl">Total desta refeicao</h2>
+        <h2 className="text-xl">Total desta refeição</h2>
         <MacroSummary {...totals} />
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
           <button
@@ -206,7 +206,7 @@ export function ResultEditor(props: ResultEditorProps) {
             onClick={onSave}
             disabled={items.length === 0 || saved}
           >
-            {saved ? "Refeicao salva" : "Salvar refeicao"}
+            {saved ? "Refeição salva" : "Salvar refeição"}
           </button>
           <button type="button" className="btn-secondary" onClick={onDiscard}>
             Descartar e tirar outra foto
@@ -216,7 +216,7 @@ export function ResultEditor(props: ResultEditorProps) {
 
       {uncertainties.length > 0 || notDeterminable.length > 0 ? (
         <div className="card">
-          <h2 className="text-lg">Incertezas desta analise</h2>
+          <h2 className="text-lg">Incertezas desta análise</h2>
           {uncertainties.length > 0 ? (
             <ul className="mt-2 list-disc space-y-1 pl-6 text-brand-800">
               {uncertainties.map((text) => (
@@ -226,7 +226,7 @@ export function ResultEditor(props: ResultEditorProps) {
           ) : null}
           {notDeterminable.length > 0 ? (
             <>
-              <h3 className="mt-4 text-base">Nao e possivel determinar pela foto</h3>
+              <h3 className="mt-4 text-base">Não é possível determinar pela foto</h3>
               <ul className="mt-2 list-disc space-y-1 pl-6 text-brand-800">
                 {notDeterminable.map((text) => (
                   <li key={text}>{text}</li>

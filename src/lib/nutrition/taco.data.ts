@@ -37,7 +37,7 @@ const RAW: FoodRef[] = [
   },
   {
     id: "feijao-carioca-cozido",
-    name: "Feijao carioca cozido",
+    name: "Feijão carioca cozido",
     keywords: ["feijao", "feijao carioca", "feijao preto", "beans"],
     group: "Leguminosas",
     per100g: { kcal: 76, protein: 4.8, carbs: 13.6, fat: 0.5 },
@@ -45,7 +45,7 @@ const RAW: FoodRef[] = [
   },
   {
     id: "macarrao-cozido",
-    name: "Macarrao cozido",
+    name: "Macarrão cozido",
     keywords: ["macarrao", "massa", "espaguete", "pasta", "noodles"],
     group: "Cereais",
     per100g: { kcal: 122, protein: 3.9, carbs: 24.5, fat: 0.9 },
@@ -53,7 +53,7 @@ const RAW: FoodRef[] = [
   },
   {
     id: "pao-frances",
-    name: "Pao frances",
+    name: "Pão francês",
     keywords: ["pao", "pao frances", "pao de sal", "bread"],
     group: "Cereais",
     per100g: { kcal: 300, protein: 8.0, carbs: 58.6, fat: 3.1 },
@@ -85,7 +85,7 @@ const RAW: FoodRef[] = [
   },
   {
     id: "peixe-tilapia-grelhada",
-    name: "Tilapia, file, grelhado",
+    name: "Tilápia, filé, grelhado",
     keywords: ["peixe", "tilapia", "file de peixe", "fish"],
     group: "Pescados",
     per100g: { kcal: 128, protein: 26.2, carbs: 0, fat: 2.7 },
@@ -157,7 +157,7 @@ const RAW: FoodRef[] = [
   },
   {
     id: "oleo-soja",
-    name: "Oleo de soja",
+    name: "Óleo de soja",
     keywords: ["oleo", "oleo de soja", "oil"],
     group: "Oleos",
     per100g: { kcal: 884, protein: 0, carbs: 0, fat: 100 },
@@ -173,7 +173,7 @@ const RAW: FoodRef[] = [
   },
   {
     id: "maca",
-    name: "Maca, com casca, crua",
+    name: "Maçã, com casca, crua",
     keywords: ["maca", "apple"],
     group: "Frutas",
     per100g: { kcal: 56, protein: 0.3, carbs: 15.2, fat: 0 },
