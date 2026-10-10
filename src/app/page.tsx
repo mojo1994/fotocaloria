@@ -171,14 +171,14 @@ export default function HomePage() {
           </div>
 
           <figure className="order-first lg:order-last">
-            <Image
-              src="/demo/demonstracao.png"
-              alt="Imagem de demonstracao do FotoCaloria."
-              width={1024}
-              height={1536}
-              unoptimized
-              priority
+            <video
               className="mx-auto h-auto max-h-[520px] w-auto"
+              src="/demo/video.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label="Demonstracao do FotoCaloria."
             />
           </figure>
         </div>
